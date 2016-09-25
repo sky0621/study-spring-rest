@@ -36,4 +36,13 @@ public class ItemService {
 		return item;
 	}
 
+	public Item update(Item item) {
+		return itemRepository.put(item.getBookId(), item);
+	}
+
+	public Item delete(String itemId) {
+		Item item = itemRepository.remove(itemId);
+		return item;
+	}
+
 }
