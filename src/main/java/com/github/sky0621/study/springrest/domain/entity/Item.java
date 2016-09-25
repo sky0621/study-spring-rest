@@ -1,11 +1,9 @@
-package com.github.sky0621.study.springrest.domain.resource;
+package com.github.sky0621.study.springrest.domain.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-public class ItemResource implements Serializable {
+public class Item  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -13,7 +11,6 @@ public class ItemResource implements Serializable {
 
 	private String name;
 
-	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate publishedDate;
 
 	public String getBookId() {
@@ -39,5 +36,6 @@ public class ItemResource implements Serializable {
 	public void setPublishedDate(LocalDate publishedDate) {
 		this.publishedDate = publishedDate;
 	}
+
 
 }
