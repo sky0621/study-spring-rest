@@ -1,0 +1,11 @@
+## @see: http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+server:
+  port: 37290 ## 待ち受けポートのデフォルト（※実運用では、jar 起動時に --server.port=XXXXX として上書きすること！）
+  context-path: /api  ## コンテキストパス（※実運用では、jar 起動時に --server.contextPath=XXXXX として上書きすること！）
+
+## セキュリティ関連
+security:
+  enable-csrf: true
+  basic:
+    enabled: false
