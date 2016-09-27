@@ -19,6 +19,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	ObjectMapper objectMapper() {
+		// JSONをインデントして出力！
+		// 日付パラメータは標準日付形式でフォーマット！
 		return Jackson2ObjectMapperBuilder.json().indentOutput(true).dateFormat(new StdDateFormat()).build();
 	}
 
