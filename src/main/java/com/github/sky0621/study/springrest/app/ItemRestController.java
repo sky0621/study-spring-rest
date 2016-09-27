@@ -1,6 +1,10 @@
 package com.github.sky0621.study.springrest.app;
 
+import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.on;
+
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.github.sky0621.study.springrest.domain.criteria.ItemCriteria;
 import com.github.sky0621.study.springrest.domain.entity.Item;
 import com.github.sky0621.study.springrest.domain.exception.ItemResourceNotFoundException;
+import com.github.sky0621.study.springrest.domain.query.ItemResourceQuery;
 import com.github.sky0621.study.springrest.domain.resource.ItemResource;
 import com.github.sky0621.study.springrest.domain.service.ItemService;
 
@@ -47,17 +55,19 @@ public class ItemRestController {
 	// @Validated でリソースオブジェクトに対して入力チェックを行うとあるが、どうやって？リソースクラス内にバリデーションメソッドを用意？
 	// @RequestBody でPOST時のリクエストボディに指定されているJSONデータを取得
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> createItem(@Validated @RequestBody ItemResource resource) {
+	public ResponseEntity<Void> createItem(@Validated @RequestBody ItemResource resource,
+			UriComponentsBuilder uriBuilder) {
 		Item item = new Item();
 		item.setName(resource.getName());
 		item.setPublishedDate(resource.getPublishedDate());
 		Item createdItem = itemService.create(item);
 
-		String resourceUri = "http://localhost:8080/items/" + createdItem.getBookId();
+		URI resourceUri = MvcUriComponentsBuilder.relativeTo(uriBuilder)
+				.withMethodCall(on(ItemRestController.class).getItem(createdItem.getBookId())).build().encode().toUri();
 
 		// 201 Createdを設定（Locationヘッダーに新規作成したリソースのURIを設定）
 		// build()を用いるとレスポンスボディ不要としてVoidとなる
-		return ResponseEntity.created(URI.create(resourceUri)).build();
+		return ResponseEntity.created(resourceUri).build();
 	}
 
 	/*
@@ -82,6 +92,24 @@ public class ItemRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable String itemId) {
 		itemService.delete(itemId);
+	}
+
+	/*
+	 * 条件に応じたリソース取得
+	 */
+	@RequestMapping(method = RequestMethod.GET)
+	public List<ItemResource> searchItems(@Validated ItemResourceQuery query) {
+		ItemCriteria criteria = new ItemCriteria();
+		criteria.setName(query.getName());
+		criteria.setPublishedDate(query.getPublishedDate());
+		List<Item> items = itemService.findAllByCriteria(criteria);
+		return items.stream().map(item -> {
+			ItemResource resource = new ItemResource();
+			resource.setBookId(item.getBookId());
+			resource.setName(item.getName());
+			resource.setPublishedDate(item.getPublishedDate());
+			return resource;
+		}).collect(Collectors.toList());
 	}
 
 }

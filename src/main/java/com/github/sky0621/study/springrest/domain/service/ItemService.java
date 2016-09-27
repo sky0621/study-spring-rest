@@ -1,14 +1,17 @@
 package com.github.sky0621.study.springrest.domain.service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
+import com.github.sky0621.study.springrest.domain.criteria.ItemCriteria;
 import com.github.sky0621.study.springrest.domain.entity.Item;
 
 @Service
@@ -45,4 +48,15 @@ public class ItemService {
 		return item;
 	}
 
+	// 条件に名前があれば、それが含まれているものをチョイス
+	// 条件に出版日があれば、それが含まれているものをチョイス
+	public List<Item> findAllByCriteria(ItemCriteria criteria) {
+		return itemRepository.values().stream()
+				.filter(item -> 
+					(criteria.getName() == null || item.getName().contains(criteria.getName()))
+						&& 
+					(criteria.getPublishedDate() == null || item.getPublishedDate().equals(criteria.getPublishedDate())))
+				.sorted((o1, o2) -> o1.getPublishedDate().compareTo(o2.getPublishedDate()))
+				.collect(Collectors.toList());
+	}
 }
