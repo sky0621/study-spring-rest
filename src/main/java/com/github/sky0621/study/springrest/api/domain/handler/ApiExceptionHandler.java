@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.handler;
+package com.github.sky0621.study.springrest.api.domain.handler;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.github.sky0621.study.springrest.domain.exception.ApiError;
-import com.github.sky0621.study.springrest.domain.exception.ItemResourceNotFoundException;
+import com.github.sky0621.study.springrest.api.domain.exception.ApiError;
+import com.github.sky0621.study.springrest.api.domain.exception.ItemResourceNotFoundException;
 
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {

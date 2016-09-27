@@ -1,25 +1,18 @@
-package com.github.sky0621.study.springrest.domain.entity;
+package com.github.sky0621.study.springrest.api.domain.query;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Item  implements Serializable {
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class ItemResourceQuery implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String bookId;
-
 	private String name;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate publishedDate;
-
-	public String getBookId() {
-		return bookId;
-	}
-
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
-	}
 
 	public String getName() {
 		return name;

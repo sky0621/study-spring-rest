@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.resource;
+package com.github.sky0621.study.springrest.api.domain.resource;
 
 import java.io.Serializable;
 import java.time.LocalDate;

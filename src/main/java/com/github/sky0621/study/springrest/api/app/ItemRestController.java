@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.app;
+package com.github.sky0621.study.springrest.api.app;
 
 import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.on;
 
@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.github.sky0621.study.springrest.domain.criteria.ItemCriteria;
-import com.github.sky0621.study.springrest.domain.entity.Item;
-import com.github.sky0621.study.springrest.domain.exception.ItemResourceNotFoundException;
-import com.github.sky0621.study.springrest.domain.query.ItemResourceQuery;
-import com.github.sky0621.study.springrest.domain.resource.ItemResource;
-import com.github.sky0621.study.springrest.domain.service.ItemService;
+import com.github.sky0621.study.springrest.api.domain.criteria.ItemCriteria;
+import com.github.sky0621.study.springrest.api.domain.entity.Item;
+import com.github.sky0621.study.springrest.api.domain.exception.ItemResourceNotFoundException;
+import com.github.sky0621.study.springrest.api.domain.query.ItemResourceQuery;
+import com.github.sky0621.study.springrest.api.domain.resource.ItemResource;
+import com.github.sky0621.study.springrest.api.domain.service.ItemService;
 
 @RestController
 @RequestMapping("items")

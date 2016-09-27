@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.config;
+package com.github.sky0621.study.springrest.api.domain.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

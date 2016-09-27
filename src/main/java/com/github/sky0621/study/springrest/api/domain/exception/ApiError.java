@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.exception;
+package com.github.sky0621.study.springrest.api.domain.exception;
 
 import java.io.Serializable;
 import java.util.ArrayList;

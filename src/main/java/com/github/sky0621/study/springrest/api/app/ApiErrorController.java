@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.app;
+package com.github.sky0621.study.springrest.api.app;
 
 import static javax.servlet.RequestDispatcher.ERROR_STATUS_CODE;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.sky0621.study.springrest.domain.exception.ApiError;
+import com.github.sky0621.study.springrest.api.domain.exception.ApiError;
 
 @RestController
 @RequestMapping("error")

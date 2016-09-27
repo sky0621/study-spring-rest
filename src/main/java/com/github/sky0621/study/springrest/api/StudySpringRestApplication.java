@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest;
+package com.github.sky0621.study.springrest.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

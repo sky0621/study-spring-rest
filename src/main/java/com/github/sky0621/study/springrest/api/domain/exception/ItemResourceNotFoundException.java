@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.exception;
+package com.github.sky0621.study.springrest.api.domain.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

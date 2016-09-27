@@ -1,4 +1,4 @@
-package com.github.sky0621.study.springrest.domain.service;
+package com.github.sky0621.study.springrest.api.domain.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,8 +11,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
-import com.github.sky0621.study.springrest.domain.criteria.ItemCriteria;
-import com.github.sky0621.study.springrest.domain.entity.Item;
+import com.github.sky0621.study.springrest.api.domain.criteria.ItemCriteria;
+import com.github.sky0621.study.springrest.api.domain.entity.Item;
 
 @Service
 public class ItemService {

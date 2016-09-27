@@ -1,11 +1,11 @@
-package com.github.sky0621.study.springrest.domain.query;
+package com.github.sky0621.study.springrest.api.domain.criteria;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class ItemResourceQuery implements Serializable {
+public class ItemCriteria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
